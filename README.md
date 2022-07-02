@@ -22,6 +22,7 @@
 `make deploy name=contract-name`: 将指定合约部署到测试链.(请先执行 `make run` 和 `make mine`) 部署成功后会生成一个contract-name.address文件保存合约地址.
 
 其它:
+
 `make delete name=contract-name`: 删除指定合约文件和所有相关文件.
 
 `make attach`: attach到控制台
