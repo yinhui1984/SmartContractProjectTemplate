@@ -19,7 +19,8 @@ if [ -n "$pid" ]; then
   kill -9 $pid
 fi
 
-
+echo 删除区块链数据
 rm -rf ./data/geth
 
+echo 初始化区块链
 geth --datadir ./data init ./genesis.json
