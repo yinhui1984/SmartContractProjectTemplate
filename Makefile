@@ -1,4 +1,14 @@
-all:build
+all:build-all
+
+build-all:
+	cd ./contracts/ && ./build.sh && cd ../
+
+build:
+ifdef name
+	cd ./contracts/ && ./build.sh $(name) && cd ../
+else
+	@echo "Please specify a name for the contract. example: make build name=MyContract"
+endif
 
 run:
 	cd ./mychain/ && ./run.sh && cd ../
