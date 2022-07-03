@@ -4,9 +4,10 @@ import time
 
 from web3 import Web3  # pip3 install web3
 
-# 按需挖矿, 避免高CPU占用
+# 按需挖矿
 
 w3 = Web3(Web3.IPCProvider('../mychain/data/geth.ipc'))
+num_threads = os.cpu_count()
 
 
 def main():
@@ -21,7 +22,7 @@ def main():
             print(
                 time.strftime("%H:%M:%S", time.localtime()) + ":Mining for pending transactions: %s" % w3.eth.getBlock(
                     'pending').transactions)
-            w3.geth.miner.start(1)
+            w3.geth.miner.start(num_threads)
         else:
             print(time.strftime("%H:%M:%S", time.localtime()) + ':No pending transactions, sleeping...', end='\r')
             w3.geth.miner.stop()
